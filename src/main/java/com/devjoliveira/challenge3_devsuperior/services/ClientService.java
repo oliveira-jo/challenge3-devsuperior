@@ -57,4 +57,12 @@ public class ClientService {
         clientRepository.save(fromDB));
   }
 
+  public void delete(Long id) {
+    Client fromDB = clientRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Client not found"));
+
+    clientRepository.delete(fromDB);
+
+  }
+
 }
