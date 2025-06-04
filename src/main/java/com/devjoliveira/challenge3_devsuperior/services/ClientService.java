@@ -42,4 +42,19 @@ public class ClientService {
             new Client(dto)));
   }
 
+  public ClinetDto change(Long id, ClinetDto dto) {
+
+    Client fromDB = clientRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Client not found"));
+
+    fromDB.setName(dto.name());
+    fromDB.setCpf(dto.cpf());
+    fromDB.setIncome(dto.income());
+    fromDB.setBirthDate(dto.birthDate());
+    fromDB.setChildren(dto.children());
+
+    return new ClinetDto(
+        clientRepository.save(fromDB));
+  }
+
 }
