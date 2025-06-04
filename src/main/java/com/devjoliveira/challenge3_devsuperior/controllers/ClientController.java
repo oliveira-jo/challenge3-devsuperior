@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devjoliveira.challenge3_devsuperior.dto.ClinetDto;
 import com.devjoliveira.challenge3_devsuperior.services.ClientService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/clients")
 public class ClientController {
@@ -36,12 +38,12 @@ public class ClientController {
   }
 
   @PostMapping
-  public ResponseEntity<ClinetDto> save(@RequestBody ClinetDto dto) {
+  public ResponseEntity<ClinetDto> save(@Valid @RequestBody ClinetDto dto) {
     return ResponseEntity.status(HttpStatus.CREATED).body(clientService.save(dto));
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<ClinetDto> change(@PathVariable Long id, @RequestBody ClinetDto dto) {
+  public ResponseEntity<ClinetDto> change(@PathVariable Long id, @Valid @RequestBody ClinetDto dto) {
     return ResponseEntity.ok(clientService.change(id, dto));
   }
 
