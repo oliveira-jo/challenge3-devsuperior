@@ -2,6 +2,8 @@ package com.devjoliveira.challenge3_devsuperior.entities;
 
 import java.time.LocalDate;
 
+import com.devjoliveira.challenge3_devsuperior.dto.ClinetDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,13 +26,13 @@ public class Client {
   public Client() {
   }
 
-  public Client(Long id, String name, String cpf, Double income, LocalDate birth_date, Integer children) {
-    this.id = id;
-    this.name = name;
-    this.cpf = cpf;
-    this.income = income;
-    this.birthDate = birth_date;
-    this.children = children;
+  public Client(ClinetDto dto) {
+    this.id = dto.id();
+    this.name = dto.name();
+    this.cpf = dto.cpf();
+    this.income = dto.income();
+    this.birthDate = dto.birthDate();
+    this.children = dto.children();
   }
 
   public Long getId() {

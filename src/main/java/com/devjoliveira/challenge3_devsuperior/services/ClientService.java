@@ -35,4 +35,11 @@ public class ClientService {
 
   }
 
+  public ClinetDto save(ClinetDto dto) {
+
+    return new ClinetDto(
+        clientRepository.save(
+            new Client(dto)));
+  }
+
 }
