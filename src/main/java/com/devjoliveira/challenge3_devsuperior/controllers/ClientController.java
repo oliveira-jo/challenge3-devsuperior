@@ -1,5 +1,7 @@
 package com.devjoliveira.challenge3_devsuperior.controllers;
 
+import java.net.URI;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.devjoliveira.challenge3_devsuperior.dto.ClinetDto;
 import com.devjoliveira.challenge3_devsuperior.services.ClientService;
@@ -40,7 +43,12 @@ public class ClientController {
 
   @PostMapping
   public ResponseEntity<ClinetDto> save(@Valid @RequestBody ClinetDto dto) {
-    return ResponseEntity.status(HttpStatus.CREATED).body(clientService.save(dto));
+    dto = clientService.save(dto);
+
+    URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+        .path("/{id}").buildAndExpand(dto.id()).toUri();
+
+    return ResponseEntity.created(uri).body(dto);
   }
 
   @PutMapping("/{id}")
