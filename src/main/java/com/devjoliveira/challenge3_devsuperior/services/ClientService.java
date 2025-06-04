@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.devjoliveira.challenge3_devsuperior.dto.ClinetDto;
 import com.devjoliveira.challenge3_devsuperior.entities.Client;
 import com.devjoliveira.challenge3_devsuperior.repositories.ClientRepository;
+import com.devjoliveira.challenge3_devsuperior.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ClientService {
@@ -21,7 +22,7 @@ public class ClientService {
   public ClinetDto findById(Long id) {
 
     Client entity = clientRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Client not found"));
+        .orElseThrow(() -> new ResourceNotFoundException("Client not found"));
 
     return new ClinetDto(entity);
 
@@ -45,7 +46,7 @@ public class ClientService {
   public ClinetDto change(Long id, ClinetDto dto) {
 
     Client fromDB = clientRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Client not found"));
+        .orElseThrow(() -> new ResourceNotFoundException("Client not found"));
 
     fromDB.setName(dto.name());
     fromDB.setCpf(dto.cpf());
@@ -59,7 +60,7 @@ public class ClientService {
 
   public void delete(Long id) {
     Client fromDB = clientRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Client not found"));
+        .orElseThrow(() -> new ResourceNotFoundException("Client not found"));
 
     clientRepository.delete(fromDB);
 
