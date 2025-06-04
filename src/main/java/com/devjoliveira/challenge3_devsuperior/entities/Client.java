@@ -18,7 +18,7 @@ public class Client {
   private String name;
   private String cpf;
   private Double income;
-  private LocalDate birth_date;
+  private LocalDate birthDate;
   private Integer children;
 
   public Client() {
@@ -29,7 +29,7 @@ public class Client {
     this.name = name;
     this.cpf = cpf;
     this.income = income;
-    this.birth_date = birth_date;
+    this.birthDate = birth_date;
     this.children = children;
   }
 
@@ -65,12 +65,12 @@ public class Client {
     this.income = income;
   }
 
-  public LocalDate getBirth_date() {
-    return birth_date;
+  public LocalDate getBirthDate() {
+    return birthDate;
   }
 
-  public void setBirth_date(LocalDate birth_date) {
-    this.birth_date = birth_date;
+  public void setBirthDate(LocalDate birth_date) {
+    this.birthDate = birth_date;
   }
 
   public Integer getChildren() {
@@ -108,7 +108,7 @@ public class Client {
 
   @Override
   public String toString() {
-    return "Client [id=" + id + ", name=" + name + ", cpf=" + cpf + ", income=" + income + ", birth_date=" + birth_date
+    return "Client [id=" + id + ", name=" + name + ", cpf=" + cpf + ", income=" + income + ", birth_date=" + birthDate
         + ", children=" + children + "]";
   }
 
