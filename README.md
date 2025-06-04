@@ -3,10 +3,11 @@
 
 #### Este é um desafio do módulo de API REST, camadas, CRUD, exceções e validações do curso Java Spring Professional - devsuperior.
 
-O projeto deverá estar com um ambiente de testes configurado acessando o banco de dados H2, deverá usar
-Maven como gerenciador de dependência, e Java como linguagem.
+O projeto esta com um ambiente de testes configurado acessando o banco de dados H2, com
+ gerenciador de dependência  Maven, Java como linguagem e Spring Boot com framework.
 
-Um cliente possui nome, CPF, renda, data de nascimento, e quantidade de filhos. A especificação da entidade Client é mostrada a seguir:
+Um cliente possui nome, CPF, renda, data de nascimento, e quantidade de filhos. 
+A especificação da entidade Client é mostrada a seguir:
 
 ![Class](/src/main/resources/img/Class.png)
 
@@ -61,8 +62,11 @@ Um cliente possui nome, CPF, renda, data de nascimento, e quantidade de filhos. 
 | :---------- | :--------- | :------------------------------------------ |
 | `id`      | `Long` | **Obrigatório**. ID do cliente |
 
-## Requisitos
+## Banco de Dados
 - Seed de pelo menos 10 clientes
+- Test h2 database
+
+## Validação
 - Tratar exceções:
     - id não encontrado (retorno 404)
     - Erro de validação (retorno 422), mensagens customizadas para cada campo inválido.
@@ -70,7 +74,7 @@ Um cliente possui nome, CPF, renda, data de nascimento, e quantidade de filhos. 
         - Nome não pode ser vazio;
         - Data nascimento não pode ser futura (@PastOrPresente)
 
-## Checklist
+## Checklist Geral
   1. ✅ Busca por id retorna cliente existente
   2. ✅ Busca por id retorna 404 para cliente inexistente
   3. ✅ Busca paginada retorna listagem paginada corretamente
