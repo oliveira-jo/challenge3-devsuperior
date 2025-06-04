@@ -1,6 +1,8 @@
 
 package com.devjoliveira.challenge3_devsuperior.services;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.devjoliveira.challenge3_devsuperior.dto.ClinetDto;
@@ -22,6 +24,14 @@ public class ClientService {
         .orElseThrow(() -> new RuntimeException("Client not found"));
 
     return new ClinetDto(entity);
+
+  }
+
+  public Page<ClinetDto> findAll(Pageable pageable) {
+
+    Page<Client> page = clientRepository.findAll(pageable);
+
+    return page.map(ClinetDto::new);
 
   }
 

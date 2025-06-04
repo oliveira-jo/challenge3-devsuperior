@@ -1,5 +1,6 @@
 package com.devjoliveira.challenge3_devsuperior.controllers;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,5 +22,10 @@ public class ClientController {
   @GetMapping("/{id}")
   public ResponseEntity<?> findById(@PathVariable Long id) {
     return ResponseEntity.ok(clientService.findById(id));
+  }
+
+  @GetMapping
+  public ResponseEntity<?> findAll(Pageable pageable) {
+    return ResponseEntity.ok(clientService.findAll(pageable));
   }
 }
